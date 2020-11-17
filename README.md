@@ -12,12 +12,13 @@
 4. Copy Paste file "env", lalu rename dengan ".env"
 5. buka file .env dengan aplikasi editor dan cari 
 
+==================================================
 #### '# database.default.hostname = localhost'
 #### '# database.default.database = ci4'
 #### '# database.default.username = root'
 #### '# database.default.password = root'
 #### '# database.default.DBDriver = MySQLi'
-
+==================================================
 #### hapus tanda pagar dan atur sesuai database kalian
 
 6. Buka cmd dan ketik "cd C:\xampp\htdocs\abd_sql\app\ThirdParty"
@@ -25,20 +26,23 @@
 8. Buka di aplikasi editor file di direktori ini
 C:\xampp\htdocs\abd_sql\app\ThirdParty\myth-auth\src\config\Auth.php
 Cari : 
-
+==================================================
 #### public $requireActivation = .... 
 dan ganti
-#### public $requireActivation false 
-
+#### public $requireActivation false
+==================================================
+Cari :
+==================================================
 #### public $allowRemembering = false;
 dan ganti
-### public $allowRemembering = true;
+#### public $allowRemembering = true;
+==================================================
 
 9. buka cmd ketik "cd C:\xampp\htdocs\abd_sql\"
 10. ketik lagi "php spark migrate"
 11. jika tidak ada error maka bisa ketik "php spark serve"
+==================================================
 
-=========================================================
 # CodeIgniter 4 Framework
 
 ## What is CodeIgniter?
