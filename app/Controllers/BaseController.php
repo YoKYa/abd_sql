@@ -18,7 +18,10 @@ use CodeIgniter\Controller;
 
 class BaseController extends Controller
 {
-
+	protected $DB; 
+	public function __construct() {
+		$this->DB = \Config\Database::connect();
+	}
 	/**
 	 * An array of helpers to be loaded automatically upon
 	 * class instantiation. These helpers will be available
@@ -42,5 +45,5 @@ class BaseController extends Controller
 		// E.g.:
 		// $this->session = \Config\Services::session();
 	}
-
+	
 }

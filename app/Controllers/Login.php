@@ -4,9 +4,9 @@ class Login extends BaseController
 {
 	public function index()
 	{
-		if (user() == null) {
+		if (logged_in()) {
 			$data = [
-				'title' => "Login Control Panel"
+				'title' => "Login MiniBlog"
 			];
 			return view('login/log',$data);
 		}else {

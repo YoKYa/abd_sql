@@ -2,9 +2,16 @@
 
 class Beranda extends BaseController
 {
+	
 	public function index()
 	{
-		echo "Beranda";
+		$sql = "SELECT * from users WHERE id=".user_id();
+		$hasil = $this->DB->query($sql);
+		dd($hasil->getResult());
+		$data = [
+			'title' => "Beranda",
+		];
+		return view('temp/template', $data);
 	}
 
 }
