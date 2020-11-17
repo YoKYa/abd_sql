@@ -12,11 +12,11 @@
 4. Copy Paste file "env", lalu rename dengan ".env"
 5. buka file .env dengan aplikasi editor dan cari 
 
-'# database.default.hostname = localhost'
-'# database.default.database = ci4'
-'# database.default.username = root'
-'# database.default.password = root'
-'# database.default.DBDriver = MySQLi'
+#### '# database.default.hostname = localhost'
+#### '# database.default.database = ci4'
+#### '# database.default.username = root'
+#### '# database.default.password = root'
+#### '# database.default.DBDriver = MySQLi'
 
 #### hapus tanda pagar dan atur sesuai database kalian
 
