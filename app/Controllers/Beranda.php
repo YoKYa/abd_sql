@@ -2,7 +2,6 @@
 
 class Beranda extends BaseController
 {
-	
 	public function index()
 	{
 		$sql = "SELECT * from users WHERE id=".user_id();

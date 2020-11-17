@@ -4,7 +4,7 @@ class Login extends BaseController
 {
 	public function index()
 	{
-		if (logged_in()) {
+		if (!logged_in()) {
 			$data = [
 				'title' => "Login MiniBlog"
 			];
