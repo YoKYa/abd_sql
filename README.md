@@ -1,3 +1,45 @@
+# Blog CodeIgniter
+### by Yogi Eka Prastiya (18050623013)
+
+#### Yang dibutuhkan 
+1. Download dan Install Git
+2. XAMPP (MySQL) pastikan mysql aktif
+
+## Cara Pakai
+1. Buka CMD
+2. ketik "cd C:\xampp\htdocs\" (bisa direktori yang lain)
+3. ketik "git clone https://github.com/YoKYa/abd_sql.git" (Tunggu sampai selesai)
+4. Copy Paste file "env", lalu rename dengan ".env"
+5. buka file .env dengan aplikasi editor dan cari 
+
+'# database.default.hostname = localhost'
+'# database.default.database = ci4'
+'# database.default.username = root'
+'# database.default.password = root'
+'# database.default.DBDriver = MySQLi'
+
+#### hapus tanda pagar dan atur sesuai database kalian
+
+6. Buka cmd dan ketik "cd C:\xampp\htdocs\abd_sql\app\ThirdParty"
+7. ketik "git clone https://github.com/lonnieezell/myth-auth.git" (Tunggu sampai selesai)
+8. Buka di aplikasi editor file di direktori ini
+C:\xampp\htdocs\abd_sql\app\ThirdParty\myth-auth\src\config\Auth.php
+dan cari 
+### public $requireActivation = .... 
+dan ganti setelah "=" dengan false, (untuk saat ini tidak diperlukan)
+
+cari lagi
+### public $allowRemembering = false;
+dan ganti menjadi
+### public $allowRemembering = true;
+
+9. buka cmd ketik "cd C:\xampp\htdocs\abd_sql\"
+10. ketik lagi "php spark migrate"
+11. jika tidak ada error maka bisa ketik "php spark serve"
+
+
+
+
 # CodeIgniter 4 Framework
 
 ## What is CodeIgniter?
