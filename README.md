@@ -24,22 +24,21 @@
 7. ketik "git clone https://github.com/lonnieezell/myth-auth.git" (Tunggu sampai selesai)
 8. Buka di aplikasi editor file di direktori ini
 C:\xampp\htdocs\abd_sql\app\ThirdParty\myth-auth\src\config\Auth.php
-dan cari 
-### public $requireActivation = .... 
-dan ganti setelah "=" dengan false, (untuk saat ini tidak diperlukan)
+Cari : 
 
-cari lagi
-### public $allowRemembering = false;
-dan ganti menjadi
+#### public $requireActivation = .... 
+dan ganti
+#### public $requireActivation false 
+
+#### public $allowRemembering = false;
+dan ganti
 ### public $allowRemembering = true;
 
 9. buka cmd ketik "cd C:\xampp\htdocs\abd_sql\"
 10. ketik lagi "php spark migrate"
 11. jika tidak ada error maka bisa ketik "php spark serve"
 
-
-
-
+=========================================================
 # CodeIgniter 4 Framework
 
 ## What is CodeIgniter?
