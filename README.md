@@ -26,17 +26,17 @@
 8. Buka di aplikasi editor file di direktori ini
 C:\xampp\htdocs\abd_sql\app\ThirdParty\myth-auth\src\config\Auth.php
 Cari : 
-==================================================
+##### ==================================================
 #### public $requireActivation = .... 
 dan ganti
 #### public $requireActivation false
-==================================================
+##### ==================================================
 Cari :
-==================================================
+##### ==================================================
 #### public $allowRemembering = false;
 dan ganti
 #### public $allowRemembering = true;
-==================================================
+##### ==================================================
 
 9. buka cmd ketik "cd C:\xampp\htdocs\abd_sql\"
 10. ketik lagi "php spark migrate"
