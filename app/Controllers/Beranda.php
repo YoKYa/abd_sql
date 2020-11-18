@@ -1,16 +1,15 @@
 <?php namespace App\Controllers;
 
+use App\Controllers\Data;
 class Beranda extends BaseController
 {
 	public function index()
 	{
-		$sql = "SELECT * from users WHERE id=".user_id();
-		$hasil = $this->DB->query($sql);
-		dd($hasil->getResult());
 		$data = [
 			'title' => "Beranda",
+			'username' => Data::u('username')
 		];
-		return view('temp/template', $data);
+		return view('page/beranda', $data);
 	}
 
 }

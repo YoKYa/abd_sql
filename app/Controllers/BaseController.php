@@ -41,8 +41,5 @@ class BaseController extends Controller
 		// E.g.:
 		// $this->session = \Config\Services::session();
 	}
-	protected $DB; 
-	public function __construct() {
-		$this->DB = \Config\Database::connect();
-	}
+	
 }
