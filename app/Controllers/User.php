@@ -5,6 +5,9 @@ class User extends BaseController
 {
 	public function index()
 	{
+		if (!logged_in()) {
+			redirect()->to('/');
+		}
 		$data = [
 			'title' => "Beranda",
 			'username' => Data::dt('username')
@@ -13,6 +16,9 @@ class User extends BaseController
 	}
     public function mypost($page = 1)
     {
+		if (!logged_in()) {
+			redirect()->to('/');
+		}
 		$page = ($page-1) * 5;
 		$sql = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'post' ORDER BY `updated_at` DESC LIMIT ".$page.",5";
 		$sql2 = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'post'";
@@ -32,6 +38,9 @@ class User extends BaseController
 	}
 	public function mypage($page = 1)
     {
+		if (!logged_in()) {
+			redirect()->to('/');
+		}
 		$page = ($page-1) * 5;
 		$sql = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'halaman' ORDER BY `updated_at` DESC LIMIT ".$page.",5";
 		$sql2 = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'halaman'";
