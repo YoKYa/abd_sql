@@ -6,18 +6,18 @@ class User extends BaseController
 	public function index()
 	{
 		if (!logged_in()) {
-			redirect()->to('/');
+			return redirect()->to('/');
 		}
 		$data = [
 			'title' => "Beranda",
-			'username' => Data::dt('username')
+			'username' => Data::u('username')
 		];
 		return view('page/user', $data);
 	}
     public function mypost($page = 1)
     {
 		if (!logged_in()) {
-			redirect()->to('/');
+			return redirect()->to('/');
 		}
 		$page = ($page-1) * 5;
 		$sql = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'post' ORDER BY `updated_at` DESC LIMIT ".$page.",5";
@@ -39,7 +39,7 @@ class User extends BaseController
 	public function mypage($page = 1)
     {
 		if (!logged_in()) {
-			redirect()->to('/');
+			return redirect()->to('/');
 		}
 		$page = ($page-1) * 5;
 		$sql = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'halaman' ORDER BY `updated_at` DESC LIMIT ".$page.",5";
@@ -85,5 +85,45 @@ class User extends BaseController
 		}else {
 			return redirect()->to('/user/mypage');
 		}
+	}
+	public function editp($username,$slug)
+	{
+		if (Data::u('username') == $username) {
+			$sql2 = "SELECT * FROM blog WHERE slug = '$slug'";
+			$data2 = Data::RunningSQL($sql2);
+			$data2 = $data2->getFirstRow();
+		}else{
+			return redirect()->to('/');
+		}
+		$data = [
+			'title' 	=> $data2->judul." || edit ",
+			'username' 	=> Data::u('username'),
+			'post'		=> $data2
+		];
+		return view('/page/edit',$data);
+	}
+	public function editps($username , $slug)
+	{
+		$sql2 = "SELECT * FROM blog WHERE slug ='$slug'";
+		$data2 = Data::RunningSQL($sql2);
+		$data2 = $data2->getFirstRow();
+		$judul 		= $this->request->getVar('judul');
+		$deskripsi 	= $this->request->getVar('deskripsi');
+		$status		= $this->request->getVar('status');
+		$tipe		= $this->request->getVar('tipe');
+		$updated_at = date('Y-m-d H:i:s');
+		if (Data::u('username') == $username) {
+			$sql1 = "UPDATE blog SET judul = '$judul', deskripsi = '$deskripsi', status = '$status', tipe='$tipe' , updated_at = '$updated_at' WHERE id ='$data2->id'";
+			Data::RunningSQL($sql1);
+		}else{
+			return redirect()->to('/');
+		}
+		return redirect()->to('/p/'.Data::u('username').'/'.$data2->slug);
+	}
+	public function postdel($id)
+	{
+		$sql = "DELETE FROM blog WHERE id='$id'";
+		Data::RunningSQL($sql);
+		return redirect()->to('/user/mypost');
 	}
 }

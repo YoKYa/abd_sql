@@ -49,7 +49,13 @@
                     <td><?= $post->penulis ?></td>
                     <td><?= $post->updated_at ?></td>
                     <td><?= $post->created_at ?></td>
-                    <td></td>
+                    <td>
+                    <div class="row">
+                        <a href="<?= base_url('/p/'.$username).'/'.$post->slug ?>" class="btn btn-sm btn-outline-info ml-2 font-weight-bold">Lihat</a>
+                        <a href="<?= base_url('/p/'.$username).'/'.$post->slug ?>/edit" class="btn btn-sm btn-outline-secondary ml-2 font-weight-bold">Edit</a>
+                        <a href="<?= base_url('/user/mypost/del/'.$post->id)?>" class="btn btn-sm btn-outline-danger ml-2 font-weight-bold">Hapus</a>
+                    </div>
+                    </td>
                 </tr>
             <?php } ?>
         </tbody>

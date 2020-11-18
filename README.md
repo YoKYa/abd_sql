@@ -39,8 +39,13 @@ dan ganti
 ##### ==================================================
 
 9. buka cmd ketik "cd C:\xampp\htdocs\abd_sql\"
-10. ketik lagi "php spark migrate"
-11. jika tidak ada error maka bisa ketik "php spark serve"
+10. ketik "composer update"
+#### jika ada error 
+#### Problem 1 - Root composer.json requires PHP extension ext-intl * but it is missing from your system. Install or enable PHP's intl extension.
+#### buka xampp -> Apache(config) -> php.ini -> cari (;extension=intl) -> hapus ; di depannya dan save
+#### ulangi ketik "composer update"
+11. ketik lagi "php spark migrate"
+12. ketik "php spark serve"
 ==================================================
 
 # CodeIgniter 4 Framework

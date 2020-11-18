@@ -1,5 +1,7 @@
 <?php namespace Config;
 
+use App\Controllers\Post;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -35,9 +37,14 @@ $routes->get('/login','Login::index');
 $routes->get('/register','Register::index');
 $routes->get('/forgot','Login::forgot');
 
+
 $routes->group('', ['filter' => 'login'], function($routes){
-    $routes->get('home', 'Home::home');
+	$routes->get('/p/(:segment)/(:segment)', 'Post::index/$1/$2');
+	$routes->get('/p/(:segment)/(:segment)/edit', 'User::editp/$1/$2');
+	$routes->post('/p/(:segment)/(:segment)/edits', 'User::editps/$1/$2');
+	$routes->get('/user/mypost/del/(:segment)', 'User::postdel/$1');
 }); 
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
