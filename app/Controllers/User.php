@@ -14,7 +14,7 @@ class User extends BaseController
     public function mypost($page = 1)
     {
 		$page = ($page-1) * 5;
-		$sql = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'post' LIMIT ".$page.",5";
+		$sql = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'post' ORDER BY `updated_at` DESC LIMIT ".$page.",5";
 		$sql2 = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'post'";
 		$hasil = Data::RunningSQL($sql);
 		$hasil2 = Data::RunningSQL($sql2);
@@ -33,7 +33,7 @@ class User extends BaseController
 	public function mypage($page = 1)
     {
 		$page = ($page-1) * 5;
-		$sql = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'halaman' LIMIT ".$page.",5";
+		$sql = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'halaman' ORDER BY `updated_at` DESC LIMIT ".$page.",5";
 		$sql2 = "SELECT * FROM blog WHERE user_id =".user_id()." AND tipe = 'halaman'";
 		$hasil = Data::RunningSQL($sql);
 		$hasil2 = Data::RunningSQL($sql2);
@@ -56,5 +56,25 @@ class User extends BaseController
 			'username' => Data::u('username'),
 		];
 		return view('page/add',$data);
+	}
+	public function adds()
+	{
+		$user_id 	= user_id();
+		$judul 		= $this->request->getVar('judul');
+		$slug 		= url_title($this->request->getVar('judul'))."-".idate("s");
+		$penulis	= Data::u('nama');
+		$deskripsi 	= $this->request->getVar('deskripsi');
+		$status		= $this->request->getVar('status');
+		$tipe		= $this->request->getVar('tipe');
+		$created_at = date('Y-m-d H:i:s');
+		$updated_at = date('Y-m-d H:i:s');
+		$sql = "INSERT INTO `blog` (`user_id`, `judul`, `slug`, `penulis`, `deskripsi`, `status`, `tipe`, `created_at`, `updated_at`) VALUES
+		('$user_id', '$judul', '$slug', '$penulis', '$deskripsi', '$status', '$tipe', '$created_at', '$updated_at');";
+		Data::RunningSQL($sql);
+		if ($tipe =='post') {
+			return redirect()->to('/user/mypost');
+		}else {
+			return redirect()->to('/user/mypage');
+		}
 	}
 }
